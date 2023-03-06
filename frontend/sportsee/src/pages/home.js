@@ -7,6 +7,11 @@ import * as API from "../services/getAPIData.js"
 import Greetings from "../components/greetings";
 import NutritionCards from "../components/nutritioncards";
 
+/**
+ * Home component that displays user information and statistics.
+ *
+ * @returns {JSX.Element} Home JSX element.
+ */
 const Home = () => {
   const [userData, setUserData] = useState(false);
 
@@ -42,6 +47,5 @@ const Home = () => {
       </>);
   };
 }
-
 
 export default Home;
