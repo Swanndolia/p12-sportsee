@@ -1,0 +1,46 @@
+#user-infos {
+  margin-left: 8%;
+  padding: 2% 8%;
+}
+h1{
+  font-size: 48px;
+}
+main{
+  display: flex;
+  flex-direction: row;
+  gap: 31px;
+}
+#graphs{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 3;
+  gap: 30px;
+}
+#stats{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0.25;
+  gap: 30px;
+}
+
+#advanced-stats{
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  gap: 30px;
+}
+
+#advanced-stats > *{
+  background-color: black;
+  flex-grow: 0.333333;
+  display: flex;
+  border-radius: 5px;
+}
+
+
+#daily-activity{
+  display: flex;
+  flex-grow: 1;
+  background-color: black;
+  border-radius: 5px;
+}
