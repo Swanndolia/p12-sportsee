@@ -19,7 +19,7 @@ export async function getUserById(id) {
  * @returns {Promise} A promise that resolves to an object containing the user activity data.
  */
 export async function getUserActivityById(id) {
-    return (await axios.get("http://localhost:3000/user/" + id + "activity")).data.data
+    return (await axios.get("http://localhost:3000/user/" + id + "/activity")).data.data
 }
 
 /**
@@ -30,7 +30,7 @@ export async function getUserActivityById(id) {
  * @returns {Promise} A promise that resolves to an object containing the user average session data.
  */
 export async function getUserAverageSessionById(id) {
-    return (await axios.get("http://localhost:3000/user/" + id + "average-sessions")).data.data
+    return (await axios.get("http://localhost:3000/user/" + id + "/average-sessions")).data.data
 }
 
 /**
@@ -52,5 +52,5 @@ export async function getUserCompletionById(id) {
  * @returns {Promise} A promise that resolves to an object containing the user performance data.
  */
 export async function getUserPerformanceById(id) {
-    return (await axios.get("http://localhost:3000/user/" + id + "performance")).data.data
+    return (await axios.get("http://localhost:3000/user/" + id + "/performance")).data.data
 }

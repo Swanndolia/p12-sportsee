@@ -13,7 +13,6 @@ import carbsIcon from "../assets/images/carbs-icon.svg"
  * @returns {JSX.Element[]} An array of React elements that display the nutrition cards.
  */
 const NutritionCards = ({ data }) => {
-    console.log(data)
     return (generateCards(data));
 };
 

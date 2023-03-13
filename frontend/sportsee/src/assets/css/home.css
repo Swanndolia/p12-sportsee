@@ -2,45 +2,85 @@
   margin-left: 8%;
   padding: 2% 8%;
 }
-h1{
+
+h1 {
   font-size: 48px;
 }
-main{
+
+main {
   display: flex;
   flex-direction: row;
   gap: 31px;
 }
-#graphs{
+
+#graphs {
   display: flex;
   flex-direction: column;
   flex-grow: 3;
   gap: 30px;
+  max-width: 80%;
 }
-#stats{
+
+#stats {
   display: flex;
   flex-direction: column;
   flex-grow: 0.25;
   gap: 30px;
 }
 
-#advanced-stats{
+#advanced-stats {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  gap: 30px;
+  gap: 1vw;
 }
 
-#advanced-stats > *{
-  background-color: black;
+#advanced-stats>* {
+  background-color: #FBFBFB;
   flex-grow: 0.333333;
   display: flex;
   border-radius: 5px;
 }
 
 
-#daily-activity{
+#daily-activity {
   display: flex;
   flex-grow: 1;
   background-color: black;
   border-radius: 5px;
+}
+
+#main-graph{
+  background-color: #FBFBFB;
+}
+
+#performance-chart {
+  background-color: #282D30;
+}
+#duration-chart{
+  background-color: #FF0000;
+}
+
+@media screen and (max-width: 1200px) {
+  #stats {
+    flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  main {
+    flex-wrap: wrap;
+  }
+
+  #graphs {
+    max-width: 80%;
+  }
+
+  #user-infos {
+    margin-left: 4%;
+  }
+  #stats > * {
+    padding: 20px;
+  }
+
 }
