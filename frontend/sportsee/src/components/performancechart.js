@@ -15,7 +15,7 @@ const PerformanceChart = ({ performanceData }) => {
     }
 
     return (
-        <ResponsiveContainer id="performance-chart" minWidth={230} maxHeight={300} width="30%" height="fit-content" aspect={1}>
+        <ResponsiveContainer id="performance-chart" minWidth={230} maxHeight={260} width="30%" height="fit-content" aspect={1}>
             <RadarChart data={[...performanceData].reverse()} outerRadius={80} >
                 <PolarGrid radialLines={false} />
                 <PolarAngleAxis dataKey='kind' tickLine={false} tick={{ fontSize: 12 }} stroke="#FFFFFF" tickFormatter={convertPerfNumberToPerfString} />

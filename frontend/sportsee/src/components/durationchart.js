@@ -1,4 +1,4 @@
-import { CartesianGrid, LineChart, XAxis, YAxis, Tooltip, Line, ResponsiveContainer } from "recharts";
+import { CartesianGrid, LineChart, XAxis, YAxis, Tooltip, Line, Legend, ResponsiveContainer } from "recharts";
 
 const DurationChart = ({ durationData }) => {
 
@@ -25,9 +25,17 @@ const DurationChart = ({ durationData }) => {
         }
     }
 
+    const DurationChartTitle = () => {
+        return (<>
+            <p className="duration-chart-title">Durée moyenne des</p>
+            <p className="duration-chart-title">sessions</p></>
+        )
+    }
+
     return (
-        <ResponsiveContainer id="duration-chart" maxHeight={300} minWidth={230} width="30%" height="fit-content" aspect={1}>
+        <ResponsiveContainer id="duration-chart" maxHeight={260} minWidth={230} width="30%" height="fit-content" aspect={1}>
             <LineChart data={durationData} margin={{ top: 80, right: 10, left: 10, bottom: 40 }}  >
+                <Legend verticalAlign="top" align='right' wrapperStyle={{ marginTop: '-45px' }} content={<DurationChartTitle />} />
                 <CartesianGrid horizontal={false} vertical={false} />
                 <XAxis dataKey='day' type="category" axisLine={false} tickLine={false} tick={{ fontSize: 12, fontWeight: 500 }} tickFormatter={convertDayNumberToDayLetter} stroke='rgba(255, 255, 255, 0.5)' tickMargin={35} />
                 <YAxis hide='true' domain={[]} />

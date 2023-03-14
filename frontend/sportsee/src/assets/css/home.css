@@ -25,7 +25,7 @@ main {
   display: flex;
   flex-direction: column;
   flex-grow: 0.25;
-  gap: 30px;
+  gap: 39px;
 }
 
 #advanced-stats {
@@ -36,7 +36,7 @@ main {
 }
 
 #advanced-stats>* {
-  background-color: #FBFBFB;
+  position: relative;
   flex-grow: 0.333333;
   display: flex;
   border-radius: 5px;
@@ -50,16 +50,48 @@ main {
   border-radius: 5px;
 }
 
-#main-graph{
+#main-graph {
   background-color: #FBFBFB;
+  padding: 60px 0 20px 0;
+}
+
+#main-graph-title {
+  position: absolute;
+  margin: -40px 20px;
+  font-weight: 500;
+}
+
+#duration-graph-title {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #FFFFFF;
+  opacity: 50%;
 }
 
 #performance-chart {
   background-color: #282D30;
 }
-#duration-chart{
+
+#duration-chart {
   background-color: #FF0000;
 }
+
+.duration-chart-title {
+  margin-top: -5px;
+  line-height: 50%;
+  color: white;
+  opacity: 50%;
+}
+
+#score-chart {
+  background-color: #FBFBFB;
+}
+
+#score-chart-legend {
+  text-align: center;
+}
+
 
 @media screen and (max-width: 1200px) {
   #stats {
@@ -69,17 +101,30 @@ main {
   }
 
   main {
+    justify-content: center;
     flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  #main-graph {
+    padding-bottom: 5px;
   }
 
   #graphs {
-    max-width: 80%;
+    max-width: 100%;
+    gap: 10px;
   }
 
   #user-infos {
-    margin-left: 4%;
+    text-align: center;
   }
-  #stats > * {
+
+  h1 {
+    font-size: 30px;
+    margin: 0px;
+  }
+
+  #stats>* {
     padding: 20px;
   }
 
