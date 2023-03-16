@@ -43,7 +43,7 @@ function ScoreChart({ scoreData }) {
         <ResponsiveContainer id="score-chart" width="30%" height="fit-content" minWidth={230} maxHeight={260} aspect={1}>
             <PieChart>
                 <Legend layout="horizontal" verticalAlign="center" align="center" wrapperStyle={{ top: "50%", transform: "translateY(-50%)" }} content={<ScoreChartLegend />} />
-                <Pie data={percentScore} dataKey="value" innerRadius={70} outerRadius={85} startAngle={90}>
+                <Pie data={percentScore} dataKey="value" innerRadius={70} outerRadius={82} startAngle={90}>
                     {
                         percentScore.map((entry, index) => (index === 0 ?
                             <Cell key={"cell-" + { index }} cornerRadius={10} fill="#ff0000" /> :

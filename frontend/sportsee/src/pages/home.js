@@ -24,11 +24,11 @@ const Home = () => {
   const [userPerformanceData, setUserPerformanceData] = useState(false);
   const [userDurationData, setUserDurationData] = useState(false);
   const [userScoreData, setUserScoreData] = useState(false);
-  const userID = 18 //select user id either 12 or 18
+  const userID = 12 //select user id either 12 or 18
 
   useEffect(() => {
     async function getData() {
-      const useMOCK = true //choose to use MOCK data or API data
+      const useMOCK = false //choose to use MOCK data or API data
       const data = useMOCK ? MOCK.getUserById(userID) : await API.getUserById(userID).catch((error) => setErrorAPI(e => e + "Erreur getUserId: \n" + error + "\n\n"))
       const dailyData = useMOCK ? MOCK.getUserActivityById(userID) : await API.getUserActivityById(userID).catch((error) => setErrorAPI(e => e + "Erreur getUserActivityById: \n" + error + "\n\n"))
       const scoreData = useMOCK ? MOCK.getUserCompletionById(userID) : await API.getUserCompletionById(userID).catch((error) => setErrorAPI(e => e + "Erreur getUserCompletionById: \n" + error + "\n\n"))
