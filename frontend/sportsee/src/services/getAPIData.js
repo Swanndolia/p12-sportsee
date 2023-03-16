@@ -10,8 +10,7 @@ import axios from "axios"
 export async function getUserById(id) {
     return (
         await axios.get("http://localhost:3000/user/" + id)
-            .then((resp) => resp.data.data)
-            .catch((error) => alert("Erreur: \n" + error)))
+            .then((resp) => resp.data.data))
 }
 
 /**
@@ -23,8 +22,7 @@ export async function getUserById(id) {
  */
 export async function getUserActivityById(id) {
     return (await axios.get("http://localhost:3000/user/" + id + "/activity")
-        .then((resp) => resp.data.data)
-        .catch((error) => alert("Erreur: \n" + error)))
+        .then((resp) => resp.data.data))
 }
 
 /**
@@ -37,8 +35,7 @@ export async function getUserActivityById(id) {
 export async function getUserAverageSessionById(id) {
     return (
         await axios.get("http://localhost:3000/user/" + id + "/average-sessions")
-            .then((resp) => resp.data.data)
-            .catch((error) => alert("Erreur: \n" + error)))
+            .then((resp) => resp.data.data))
 }
 
 /**
@@ -51,14 +48,11 @@ export async function getUserAverageSessionById(id) {
 export async function getUserCompletionById(id) {
     return (
         await axios.get("http://localhost:3000/user/" + id)
-            .then((resp) => resp.data.data.score)
-            .catch((error) => alert("Erreur: \n" + error)) ?
+            .then((resp) => resp.data.data.score)) ?
             (await axios.get("http://localhost:3000/user/" + id)
-                .then((resp) => resp.data.data.score)
-                .catch((error) => alert("Erreur: \n" + error))) :
+                .then((resp) => resp.data.data.score)) :
             (await axios.get("http://localhost:3000/user/" + id)
-                .then((resp) => resp.data.data.todayScore)
-                .catch((error) => alert("Erreur: \n" + error))))
+                .then((resp) => resp.data.data.todayScore))
 }
 
 /**
@@ -71,6 +65,5 @@ export async function getUserCompletionById(id) {
 export async function getUserPerformanceById(id) {
     return (
         await axios.get("http://localhost:3000/user/" + id + "/performance")
-            .then((resp) => resp.data.data)
-            .catch((error) => alert("Erreur: \n" + error)))
+            .then((resp) => resp.data.data))
 }

@@ -1,5 +1,5 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import PropTypes from 'prop-types';
 /**
  * A bar chart that displays daily data for weight and calories burned.
  * @param {Object} props - The component props.
@@ -31,7 +31,7 @@ const DailyChart = ({ dailyData }) => {
      * @returns {JSX.Element} - A React component for the legend.
      */
     const GenerateLegendWithoutTextColor = (value) => {
-        return <span style={{ color:"#74798C" }}>{value}</span>;
+        return <span style={{ color: "#74798C" }}>{value}</span>;
     };
 
     return (
@@ -44,7 +44,7 @@ const DailyChart = ({ dailyData }) => {
                     <XAxis dataKey="day" tickLine={false} tick={{ fontSize: 14, stroke: '#9B9EAC' }} dy={15} />
                     <YAxis yAxisId="kilogram" dataKey="kilogram" type="number" domain={['dataMin - 2', 'dataMax + 1']} tickCount="3" axisLine={false} orientation="right" tickLine={false} tick={{ fontSize: 14, stroke: '#9B9EAC' }} dx={15} />
                     <YAxis yAxisId="calories" dataKey="calories" type="number" domain={['dataMin - 20', 'dataMax + 10']} hide={true} />
-                    <Tooltip content={<TooltipGenerator />} />
+                    <Tooltip wrapperStyle={{ outline: "none" }} content={<TooltipGenerator />} />
                     <Bar yAxisId="kilogram" name="Poids (kg)" dataKey="kilogram" fill="#282D30" barSize={7} radius={[50, 50, 0, 0]} />
                     <Bar yAxisId="calories" name='Calories brûlées (kCal)' dataKey="calories" fill="#E60000" barSize={7} radius={[50, 50, 0, 0]} />
                 </BarChart>
@@ -52,5 +52,15 @@ const DailyChart = ({ dailyData }) => {
         </div>
     )
 }
+
+DailyChart.propTypes = {
+    dailyData: PropTypes.arrayOf(
+        PropTypes.shape({
+            day: PropTypes.string.isRequired,
+            kilogram: PropTypes.number.isRequired,
+            calories: PropTypes.number.isRequired,
+        })
+    ).isRequired,
+};
 
 export default DailyChart;

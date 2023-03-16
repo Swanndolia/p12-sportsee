@@ -92,6 +92,44 @@ main {
   text-align: center;
 }
 
+#score-percent {
+  font-size: 26px;
+}
+
+#score-graph-title {
+  position: absolute;
+  top: -70px;
+  left: 20px;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.daily-tooltip {
+  background-color: #E60000;
+  width: 55px;
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: 60px;
+  margin-top: -80px;
+  color: white;
+  padding: 5px;
+  font-size: small;
+}
+
+.duration-tooltip {
+  background-color: white;
+  width: 55px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  padding: 5px;
+  font-size: small;
+}
 
 @media screen and (max-width: 1200px) {
   #stats {
@@ -123,5 +161,4 @@ main {
   #stats>* {
     padding: 20px;
   }
-
 }

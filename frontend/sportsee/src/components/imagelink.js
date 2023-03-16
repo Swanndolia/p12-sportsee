@@ -7,11 +7,18 @@
  * @returns {JSX.Element} - The image link element.
  */
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-const ImageLink = ({img, link}) => {
+const ImageLink = ({ img, link }) => {
     return (
         <Link className="image-link" to={link}><img src={img} alt={link}></img></Link>
     )
+};
+
+
+ImageLink.propTypes = {
+    img: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
 };
 
 export default ImageLink; 

@@ -1,4 +1,5 @@
 import { ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
+import PropTypes from 'prop-types';
 
 /**
  * React functional component that renders a score chart using the Recharts library.
@@ -25,15 +26,23 @@ function ScoreChart({ scoreData }) {
      * @returns {JSX.Element} - The rendered legend.
      */
     const ScoreChartLegend = () => {
-        return (
-            <div id="score-chart-legend">{scoreData * 100}%<br />de votre<br />objectif</div>
+        return (<>
+            <span id="score-graph-title">Score</span>
+            <div id="score-chart-legend">
+                <span id="score-percent">
+                    {scoreData * 100}%
+                </span>
+                <br />de votre
+                <br />objectif
+            </div>
+        </>
         )
     }
 
     return (
         <ResponsiveContainer id="score-chart" width="30%" height="fit-content" minWidth={230} maxHeight={260} aspect={1}>
             <PieChart>
-                <Legend layout="horizontal" verticalAlign="center" align="center" wrapperStyle={{ top: "50%", transform: "translateY(-50%)"}} content={<ScoreChartLegend />} />
+                <Legend layout="horizontal" verticalAlign="center" align="center" wrapperStyle={{ top: "50%", transform: "translateY(-50%)" }} content={<ScoreChartLegend />} />
                 <Pie data={percentScore} dataKey="value" innerRadius={70} outerRadius={85} startAngle={90}>
                     {
                         percentScore.map((entry, index) => (index === 0 ?
@@ -45,5 +54,9 @@ function ScoreChart({ scoreData }) {
         </ResponsiveContainer>
     );
 }
+
+ScoreChart.propTypes = {
+    scoreData: PropTypes.number.isRequired,
+};
 
 export default ScoreChart;

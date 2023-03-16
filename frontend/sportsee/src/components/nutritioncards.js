@@ -4,6 +4,7 @@ import caloriesIcon from "../assets/images/calories-icon.svg"
 import fatIcon from "../assets/images/fat-icon.svg"
 import proteinIcon from "../assets/images/protein-icon.svg"
 import carbsIcon from "../assets/images/carbs-icon.svg"
+import PropTypes from 'prop-types';
 
 /**
  * A component that generates nutrition cards.
@@ -79,5 +80,14 @@ function mapKeyValue(key, value) {
             break;
     }
 }
+
+NutritionCards.propTypes = {
+    data: PropTypes.shape({
+        calorieCount: PropTypes.number.isRequired,
+        proteinCount: PropTypes.number.isRequired,
+        carbohydrateCount: PropTypes.number.isRequired,
+        lipidCount: PropTypes.number.isRequired,
+    }).isRequired,
+};
 
 export default NutritionCards;

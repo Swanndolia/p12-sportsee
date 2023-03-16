@@ -1,4 +1,5 @@
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer } from "recharts";
+import PropTypes from 'prop-types';
 /**
  * React functional component that renders a performance chart using the Recharts library.
  *
@@ -35,6 +36,13 @@ const PerformanceChart = ({ performanceData }) => {
             </RadarChart>
         </ResponsiveContainer>
     );
+};
+
+PerformanceChart.propTypes = {
+    performanceData: PropTypes.arrayOf(PropTypes.shape({
+        kind: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+        value: PropTypes.number.isRequired
+    })).isRequired
 };
 
 export default PerformanceChart;

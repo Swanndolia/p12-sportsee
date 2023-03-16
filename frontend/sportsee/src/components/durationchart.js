@@ -1,4 +1,5 @@
 import { CartesianGrid, LineChart, XAxis, YAxis, Tooltip, Line, Legend, ResponsiveContainer } from "recharts";
+import PropTypes from 'prop-types';
 
 /**
  * A component that renders a line chart showing the average session duration for each day of the week.
@@ -36,7 +37,7 @@ const DurationChart = ({ durationData }) => {
     const TooltipGenerator = ({ payload, active }) => {
         if (active) {
             return (
-                <div className='tooltip-'>
+                <div className='duration-tooltip'>
                     <div>{payload[0].value}min</div>
                 </div>
             )
@@ -61,11 +62,18 @@ const DurationChart = ({ durationData }) => {
                 <CartesianGrid horizontal={false} vertical={false} />
                 <XAxis dataKey='day' type="category" axisLine={false} tickLine={false} tick={{ fontSize: 12, fontWeight: 500 }} tickFormatter={convertDayNumberToDayLetter} stroke='rgba(255, 255, 255, 0.5)' tickMargin={35} />
                 <YAxis hide='true' domain={[]} />
-                <Tooltip content={<TooltipGenerator />} cursor={false} />
+                <Tooltip wrapperStyle={{ outline: "none" }} content={<TooltipGenerator />} cursor={false} />
                 <Line dataKey='sessionLength' type='natural' stroke='#FFFFFF' dot={false} strokeWidth={2} />
             </LineChart>
         </ResponsiveContainer>
     )
 }
+
+DurationChart.propTypes = {
+    durationData: PropTypes.arrayOf(PropTypes.shape({
+        day: PropTypes.number.isRequired,
+        sessionLength: PropTypes.number.isRequired,
+    })).isRequired,
+};
 
 export default DurationChart
