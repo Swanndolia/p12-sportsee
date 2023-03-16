@@ -115,10 +115,6 @@ main {
     gap: 10px;
   }
 
-  #user-infos {
-    text-align: center;
-  }
-
   h1 {
     font-size: 30px;
     margin: 0px;

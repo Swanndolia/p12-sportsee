@@ -1,7 +1,18 @@
 import { CartesianGrid, LineChart, XAxis, YAxis, Tooltip, Line, Legend, ResponsiveContainer } from "recharts";
 
+/**
+ * A component that renders a line chart showing the average session duration for each day of the week.
+ * @param {object} props - The props object.
+ * @param {array} props.durationData - An array of objects containing data for each day of the week, with each object containing a "day" property (number from 1-7) and a "sessionLength" property (number).
+ * @returns {JSX.Element} - The rendered line chart component.
+ */
 const DurationChart = ({ durationData }) => {
 
+    /**
+     * Converts a day number from 1-7 to a corresponding day letter abbreviation.
+     * @param {number} day - The day number (1-7).
+     * @returns {string} - The corresponding day letter abbreviation (e.g. "L" for Monday in French).
+     */
     function convertDayNumberToDayLetter(day) {
         switch (day) {
             case 1: return 'L';
@@ -15,6 +26,13 @@ const DurationChart = ({ durationData }) => {
         }
     }
 
+    /**
+     * A custom tooltip component that shows the session duration for the hovered data point.
+     * @param {object} props - The props object.
+     * @param {array} props.payload - An array of objects containing the data for the hovered data point.
+     * @param {boolean} props.active - Whether the tooltip is currently active (hovered over).
+     * @returns {JSX.Element} - The rendered tooltip component.
+     */
     const TooltipGenerator = ({ payload, active }) => {
         if (active) {
             return (
@@ -25,6 +43,10 @@ const DurationChart = ({ durationData }) => {
         }
     }
 
+    /**
+     * A component that renders the chart title.
+     * @returns {JSX.Element} - The rendered chart title component.
+     */
     const DurationChartTitle = () => {
         return (<>
             <p className="duration-chart-title">Durée moyenne des</p>
@@ -35,7 +57,7 @@ const DurationChart = ({ durationData }) => {
     return (
         <ResponsiveContainer id="duration-chart" maxHeight={260} minWidth={230} width="30%" height="fit-content" aspect={1}>
             <LineChart data={durationData} margin={{ top: 80, right: 10, left: 10, bottom: 40 }}  >
-                <Legend verticalAlign="top" align='right' wrapperStyle={{ marginTop: '-45px' }} content={<DurationChartTitle />} />
+                <Legend layout="" verticalAlign="top" align='left' wrapperStyle={{ marginTop: '-45px' }} content={<DurationChartTitle />} />
                 <CartesianGrid horizontal={false} vertical={false} />
                 <XAxis dataKey='day' type="category" axisLine={false} tickLine={false} tick={{ fontSize: 12, fontWeight: 500 }} tickFormatter={convertDayNumberToDayLetter} stroke='rgba(255, 255, 255, 0.5)' tickMargin={35} />
                 <YAxis hide='true' domain={[]} />

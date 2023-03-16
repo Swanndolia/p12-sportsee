@@ -3,6 +3,7 @@ import "../assets/css/home.css"
 import { useEffect, useState } from "react";
 
 import * as API from "../services/getAPIData.js"
+import * as MOCK from "../services/getMOCKData"
 
 import Greetings from "../components/greetings";
 import NutritionCards from "../components/nutritioncards";
@@ -10,30 +11,32 @@ import DailyChart from "../components/dailychart.js";
 import DurationChart from "../components/durationchart.js";
 import PerformanceChart from "../components/performancechart.js";
 import ScoreChart from "../components/scorechart.js";
-
 /**
- * Home component that displays user information and statistics.
- *
- * @returns {JSX.Element} Home JSX element.
- */
+
+The Home component displays the user information and their graphs and stats.
+@returns {JSX.Element} The JSX representation of the Home component.
+*/
 const Home = () => {
   const [userData, setUserData] = useState(false);
   const [userDailyData, setUserDailyData] = useState(false);
   const [userPerformanceData, setUserPerformanceData] = useState(false);
   const [userDurationData, setUserDurationData] = useState(false);
-
-  const userID= 18
+  const [userScoreData, setUserScoreData] = useState(false);
+  const userID = 12
 
   useEffect(() => {
     async function getData() {
-      const data = await API.getUserById(userID)
-      const dailyData = await API.getUserActivityById(userID)
-      const performanceData = await API.getUserPerformanceById(userID)
-      const durationData = await API.getUserAverageSessionById(userID)
+      const useMOCK = false
+      const data = useMOCK ? MOCK.getUserById(userID) : await API.getUserById(userID)
+      const dailyData = useMOCK ? MOCK.getUserActivityById(userID) : await API.getUserActivityById(userID)
+      const scoreData = useMOCK ? MOCK.getUserCompletionById(userID) : await API.getUserCompletionById(userID)
+      const performanceData = useMOCK ? MOCK.getUserPerformanceById(userID) : await API.getUserPerformanceById(userID)
+      const durationData = useMOCK ? MOCK.getUserAverageSessionById(userID) : await API.getUserAverageSessionById(userID)
       setUserData(data)
       setUserDailyData(dailyData)
       setUserPerformanceData(performanceData)
       setUserDurationData(durationData)
+      setUserScoreData(scoreData)
     }
     getData()
 
@@ -50,7 +53,7 @@ const Home = () => {
               <span id="advanced-stats">
                 <DurationChart durationData={userDurationData.sessions} />
                 <PerformanceChart performanceData={userPerformanceData.data} />
-                <ScoreChart scoreData={userData} />
+                <ScoreChart scoreData={userScoreData} />
               </span>
             </article>
             <article id="stats">

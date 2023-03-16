@@ -1,8 +1,19 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-
+/**
+ * A bar chart that displays daily data for weight and calories burned.
+ * @param {Object} props - The component props.
+ * @param {Array} props.dailyData - An array of objects representing daily data.
+ * @returns {JSX.Element} - A React component for the daily chart.
+ */
 const DailyChart = ({ dailyData }) => {
 
+    /**
+     * A custom tooltip component for the daily chart.
+     * @param {Object} payload - The payload of the active tooltip item.
+     * @param {boolean} active - Whether the tooltip is active.
+     * @returns {JSX.Element} - A React component for the tooltip.
+     */
     const TooltipGenerator = ({ payload, active }) => {
         if (active) {
             return (
@@ -14,10 +25,14 @@ const DailyChart = ({ dailyData }) => {
         }
     }
 
+    /**
+     * A function that generates a legend with a gray text color.
+     * @param {string} value - The text to display in the legend.
+     * @returns {JSX.Element} - A React component for the legend.
+     */
     const GenerateLegendWithoutTextColor = (value) => {
-      
         return <span style={{ color:"#74798C" }}>{value}</span>;
-      };
+    };
 
     return (
         <div id="main-graph">
@@ -32,11 +47,10 @@ const DailyChart = ({ dailyData }) => {
                     <Tooltip content={<TooltipGenerator />} />
                     <Bar yAxisId="kilogram" name="Poids (kg)" dataKey="kilogram" fill="#282D30" barSize={7} radius={[50, 50, 0, 0]} />
                     <Bar yAxisId="calories" name='Calories brûlées (kCal)' dataKey="calories" fill="#E60000" barSize={7} radius={[50, 50, 0, 0]} />
-
                 </BarChart>
             </ResponsiveContainer>
         </div>
     )
 }
 
-export default DailyChart
+export default DailyChart;

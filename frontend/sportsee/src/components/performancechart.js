@@ -1,7 +1,19 @@
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart, ResponsiveContainer } from "recharts";
-
+/**
+ * React functional component that renders a performance chart using the Recharts library.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} props.performanceData - An array of objects containing performance data.
+ * @returns {JSX.Element} - The rendered component.
+ */
 const PerformanceChart = ({ performanceData }) => {
 
+    /**
+     * Converts a performance number to a performance string.
+     *
+     * @param {number} performanceData - The performance number to convert.
+     * @returns {string|null} - The corresponding performance string, or null if no match is found.
+     */
     function convertPerfNumberToPerfString(performanceData) {
         switch (performanceData) {
             case 1: return 'Cardio';
@@ -22,7 +34,7 @@ const PerformanceChart = ({ performanceData }) => {
                 <Radar dataKey='value' fill="#FF0101B2" />
             </RadarChart>
         </ResponsiveContainer>
-    )
-}
+    );
+};
 
-export default PerformanceChart
+export default PerformanceChart;

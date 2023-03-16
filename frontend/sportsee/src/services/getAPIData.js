@@ -8,7 +8,10 @@ import axios from "axios"
  * @returns {Promise} A promise that resolves to an object containing the user data.
  */
 export async function getUserById(id) {
-    return (await axios.get("http://localhost:3000/user/" + id)).data.data
+    return (
+        await axios.get("http://localhost:3000/user/" + id)
+            .then((resp) => resp.data.data)
+            .catch((error) => alert("Erreur: \n" + error)))
 }
 
 /**
@@ -19,7 +22,9 @@ export async function getUserById(id) {
  * @returns {Promise} A promise that resolves to an object containing the user activity data.
  */
 export async function getUserActivityById(id) {
-    return (await axios.get("http://localhost:3000/user/" + id + "/activity")).data.data
+    return (await axios.get("http://localhost:3000/user/" + id + "/activity")
+        .then((resp) => resp.data.data)
+        .catch((error) => alert("Erreur: \n" + error)))
 }
 
 /**
@@ -30,7 +35,10 @@ export async function getUserActivityById(id) {
  * @returns {Promise} A promise that resolves to an object containing the user average session data.
  */
 export async function getUserAverageSessionById(id) {
-    return (await axios.get("http://localhost:3000/user/" + id + "/average-sessions")).data.data
+    return (
+        await axios.get("http://localhost:3000/user/" + id + "/average-sessions")
+            .then((resp) => resp.data.data)
+            .catch((error) => alert("Erreur: \n" + error)))
 }
 
 /**
@@ -41,7 +49,16 @@ export async function getUserAverageSessionById(id) {
  * @returns {Promise} A promise that resolves to a number representing the user's completion score for the day.
  */
 export async function getUserCompletionById(id) {
-    return (await axios.get("http://localhost:3000/user/" + id)).data.data.todayScore
+    return (
+        await axios.get("http://localhost:3000/user/" + id)
+            .then((resp) => resp.data.data.score)
+            .catch((error) => alert("Erreur: \n" + error)) ?
+            (await axios.get("http://localhost:3000/user/" + id)
+                .then((resp) => resp.data.data.score)
+                .catch((error) => alert("Erreur: \n" + error))) :
+            (await axios.get("http://localhost:3000/user/" + id)
+                .then((resp) => resp.data.data.todayScore)
+                .catch((error) => alert("Erreur: \n" + error))))
 }
 
 /**
@@ -52,5 +69,8 @@ export async function getUserCompletionById(id) {
  * @returns {Promise} A promise that resolves to an object containing the user performance data.
  */
 export async function getUserPerformanceById(id) {
-    return (await axios.get("http://localhost:3000/user/" + id + "/performance")).data.data
+    return (
+        await axios.get("http://localhost:3000/user/" + id + "/performance")
+            .then((resp) => resp.data.data)
+            .catch((error) => alert("Erreur: \n" + error)))
 }
